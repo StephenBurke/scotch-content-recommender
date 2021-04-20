@@ -6,3 +6,5 @@ pyvenv.cfg
 etc/
 .ipynb_checkpoints/
 share/
+all-whiskey-reviews.csv
+whiskey_reviews.csv
