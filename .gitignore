@@ -8,3 +8,4 @@ etc/
 share/
 all-whiskey-reviews.csv
 whiskey_reviews.csv
+.vscode/
