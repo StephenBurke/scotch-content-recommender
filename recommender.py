@@ -45,28 +45,18 @@ while True:
     if event == sg.WINDOW_CLOSED or event == "Quit":
         break
     elif event == "Submit":
-        print(type(values["-BOX-"]))
-        print(str(values["-BOX-"]))
-        print(type(values["-IN-"]))
-        print(str(values["-IN-"]))
-        print(
-            str(values["-BOX-"])
-            .replace("[", "", 1)
-            .replace("]", "", -1)
-            .replace("'", "", 1)
-            .replace("'", "", -1)
+        sg.Popup(
+            recommend(
+                whiskey_names.index(
+                    str(values["-BOX-"])
+                    .replace("[", "", 1)
+                    .replace("]", "", -1)
+                    .replace("'", "", 1)
+                    .replace("'", "", -1)
+                ),
+                10,
+            )
         )
-        recommend(
-            whiskey_names.index(
-                str(values["-BOX-"])
-                .replace("[", "", 1)
-                .replace("]", "", -1)
-                .replace("'", "", 1)
-                .replace("'", "", -1)
-            ),
-            20,
-        )
-
     # pressing down arrow will trigger event -IN- then aftewards event Down:40
     elif event == "Down:40":
         sel_item = sel_item + (sel_item < len(prediction_list))

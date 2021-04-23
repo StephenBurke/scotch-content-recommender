@@ -137,8 +137,8 @@ def item(id):
 
 
 def recommend(item_id, num):
-    print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
-    print("-------")
+    # print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
     recs = results[item_id][:num]
-    for rec in recs:
-        print("Recommended: " + item(rec[1]) + " (score:" + str(rec[0]) + ")")
+    return [
+        "Recommended: " + item(rec[1]) + " (score:" + str(rec[0]) + ")" for rec in recs
+    ]
