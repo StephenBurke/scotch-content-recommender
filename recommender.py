@@ -38,6 +38,7 @@ window = sg.Window("AutoComplete", layout, return_keyboard_events=True, finalize
 sel_item = 0
 list_element = window.Element("-BOX-")
 input_text = ""
+prediction_list = []
 while True:
 
     event, values = window.read()
@@ -74,7 +75,7 @@ while True:
             continue
         else:
             input_text = text
-        prediction_list = []
+        # prediction_list = []
         if text:
             prediction_list = [item for item in keywords if item.startswith(text)]
 
