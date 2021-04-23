@@ -7,7 +7,7 @@ sg.theme("BluePurple")
 font = ("Helvetica", 16)
 
 layout = [
-    [sg.Text("Input Python keyword:", font=font)],
+    [sg.Text("Input Whiskey:", font=font)],
     [sg.Input("", size=(50, 1), font=font, enable_events=True, key="-IN-")],
     [
         sg.pin(
