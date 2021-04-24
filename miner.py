@@ -142,4 +142,8 @@ def recommend(item_id, num):
     output = [
         "Recommended: " + item(rec[1]) + " (score:" + str(rec[0]) + ")" for rec in recs
     ]
+
+    for rew in output:
+        print(rew)
+
     return output
