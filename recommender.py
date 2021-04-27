@@ -3,7 +3,7 @@ from miner import *
 
 keywords = whiskey_names
 
-sg.theme("BluePurple")
+sg.theme("DarkTeal")
 font = ("Helvetica", 16)
 
 layout = [
