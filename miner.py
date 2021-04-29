@@ -141,9 +141,11 @@ def recommend(item_id, num):
         # output + score
         # Recommended: " + item(rec[1]) + "\n (score:" + str(rec[0]) + ")\n"
         # output
-        "Recommended: " + item(rec[1]) + "\n"
+        item(rec[1]) + "\n"
         for rec in recs
     ]
 
-    r_out = "Recommending " + str(num) + " products similar to " + item(item_id) + "\n"
+    r_out = (
+        "Recommending " + str(num) + " products similar to " + item(item_id) + ":\n\n"
+    )
     return r_out + listToString(output)
