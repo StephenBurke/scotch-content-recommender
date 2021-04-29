@@ -56,13 +56,24 @@ def recommend_response(values_in):
             )
         ]
     ]
-    layout += [[sg.Button("Back")]]
+    layout += [[sg.Button("Another recommendation"), sg.Button("Quit")]]
     window = sg.Window("Recommended whiskeys: ", layout)
+    global done
+    done = False
     while True:
         event, values = window.read()
-        if event == "Back" or event == sg.WIN_CLOSED:
+        if event == "Another recommendation" or event == sg.WIN_CLOSED:
+            break
+        elif event == "Quit":
+            done = True
             break
     window.close()
+
+    return done
+
+
+# def leave ():
+#    return True
 
 
 window = sg.Window("AutoComplete", layout, return_keyboard_events=True, finalize=True)
@@ -78,6 +89,8 @@ while True:
         break
     elif event == "Submit":
         recommend_response(values)
+        if done:
+            break
     # pressing down arrow will trigger event -IN- then aftewards event Down:40
     elif event == "Down:40":
         sel_item = sel_item + (sel_item < len(prediction_list))
