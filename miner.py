@@ -6,7 +6,6 @@ import pickle
 import csv
 from tkinter import *
 import tkinter as tk
-import PySimpleGUI as sg
 
 # import requests
 

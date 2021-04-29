@@ -1,4 +1,5 @@
-from miner import *
+import PySimpleGUI as sg
+from miner import recommend, whiskey_names
 
 # https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
 # In case I forget to give credit in the poster
