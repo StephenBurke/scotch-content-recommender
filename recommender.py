@@ -1,7 +1,7 @@
 from miner import *
 
 # https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
-# Incase I forget to give credit in the poster
+# In case I forget to give credit in the poster
 keywords = whiskey_names
 
 sg.theme("DarkTeal")

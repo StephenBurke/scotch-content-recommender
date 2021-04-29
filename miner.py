@@ -11,37 +11,28 @@ import PySimpleGUI as sg
 # import requests
 
 # Finds list of whiskey names
-
 page1 = pickle.load(open("list-of-bottles.p", "rb"))
-
 soup1 = BeautifulSoup(page1.text, "lxml")
 
 # Finds whiskey names
 whiskey_names = []
-
 name0 = soup1.find("div", {"id": "filter_results"})
-
 whiskey_names = name0.find_all("h4")
 
 
 for w in range(len(whiskey_names)):
-
     whiskey_names[w] = whiskey_names[w].text
 
 
 # Finds whiskey urls
-
 whiskey_urls = []
-
 for tag in name0.find_all("a", href=True):
-
     if str(tag["href"]) == "/?page_id=264":
         continue
     whiskey_urls.append(str(tag["href"]))
 
 
 # Finds description of whiskey
-
 whiskey_files = []
 whiskey_desc = []
 
@@ -70,53 +61,56 @@ for r in range(len(whiskey_names)):
 
     whiskey_desc.append("".join(whiskey_desc_mass))
 
+
+"""  *************  If data looks bad rewrite the 3 csv below  ************  """
+
+"""
 # csv of whiskey_name, whiskey_desc
 # two columns
 
 whiskey_dict = {"id": whiskey_names, "description": whiskey_desc}
-
 df = pd.DataFrame(whiskey_dict)
-
 df.to_csv("whiskey-reviews.csv", index=False)
 
 # csv of whiskey_name - whiskey_desc
 # one column
 
 merged_whiskeys = []
-
 for i in range(len(whiskey_names)):
     merged_whiskeys.append(str(whiskey_names[i]) + "- " + str(whiskey_desc[i]))
 
-
 whiskey_dict = {"description": merged_whiskeys}
-
 df = pd.DataFrame(whiskey_dict)
-
 df.to_csv("merged-whiskey-reviews.csv", index=False)
 
 # csv of index, whiskey_name - whiskey_desc
 # two columns
 
 whiskey_dict = {"id": range(509), "description": merged_whiskeys}
-
 df = pd.DataFrame(whiskey_dict)
-
 df.to_csv("indexed-whiskey-reviews.csv", index=False)
-
+"""
 
 # Code for most of recommendation system comes from
 # https://github.com/nikitaa30/Content-based-Recommender-System
 
+"""
+Some definitions
 
-# Some definitions
-# TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).
-# IDF(t) = log_e(Total number of documents / Number of documents with term t in it).
+TF(t) = (Number of times term t appears in a document) /
+              (Total number of terms in the document)
+
+IDF(t) = log_e(Total number of documents) /
+              (Number of documents with term t in it)
+"""
+
 
 ds = pd.read_csv("indexed-whiskey-reviews.csv")
 
 tf = TfidfVectorizer(
     analyzer="word", ngram_range=(1, 3), min_df=0, stop_words="english"
 )
+
 tfidf_matrix = tf.fit_transform(ds["description"])
 
 cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
@@ -134,9 +128,12 @@ def item(id):
     return ds.loc[ds["id"] == id]["description"].tolist()[0].split(" - ")[0]
 
 
-# Just reads the results out of the dictionary.
+def listToString(l):
+    str1 = ""
+    return str1.join(l)
 
 
+# Reads the results out of the dictionary.
 def recommend(item_id, num):
     # print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
     recs = results[item_id][:num]
@@ -148,10 +145,6 @@ def recommend(item_id, num):
         "Recommended: " + item(rec[1]) + "\n"
         for rec in recs
     ]
+
     r_out = "Recommending " + str(num) + " products similar to " + item(item_id) + "\n"
     return r_out + listToString(output)
-
-
-def listToString(l):
-    str1 = ""
-    return str1.join(l)
