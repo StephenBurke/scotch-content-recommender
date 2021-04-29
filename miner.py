@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-import plotly.express as px
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -139,11 +138,15 @@ def item(id):
 def recommend(item_id, num):
     # print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
     recs = results[item_id][:num]
+
     output = [
-        "Recommended: " + item(rec[1]) + " (score:" + str(rec[0]) + ")" for rec in recs
+        "Recommended: " + item(rec[1]) + "\n (score:" + str(rec[0]) + ")\n"
+        for rec in recs
     ]
 
-    for rew in output:
-        print(rew)
+    return listToString(output)
 
-    return output
+
+def listToString(l):
+    str1 = ""
+    return str1.join(l)

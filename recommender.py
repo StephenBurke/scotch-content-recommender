@@ -1,6 +1,7 @@
 from miner import *
 
-
+# https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
+# Incase I forget to give credit in the poster
 keywords = whiskey_names
 
 sg.theme("DarkTeal")
@@ -75,10 +76,9 @@ while True:
             continue
         else:
             input_text = text
-        # prediction_list = []
         if text:
             prediction_list = [item for item in keywords if item.startswith(text)]
-
+        # print(prediction_list[0])
         list_element.update(values=prediction_list)
         sel_item = 0
         list_element.Update(set_to_index=sel_item)
