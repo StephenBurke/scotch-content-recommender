@@ -1,15 +1,14 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-import requests
 from bs4 import BeautifulSoup
-import re
 import pickle
 import csv
-import time
 from tkinter import *
 import tkinter as tk
 import PySimpleGUI as sg
+
+# import requests
 
 # Finds list of whiskey names
 
@@ -105,8 +104,11 @@ df = pd.DataFrame(whiskey_dict)
 df.to_csv("indexed-whiskey-reviews.csv", index=False)
 
 
-# Code for most of recommendation system comes from https://github.com/nikitaa30/Content-based-Recommender-System
+# Code for most of recommendation system comes from
+# https://github.com/nikitaa30/Content-based-Recommender-System
 
+
+# Some definitions
 # TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).
 # IDF(t) = log_e(Total number of documents / Number of documents with term t in it).
 
@@ -140,11 +142,14 @@ def recommend(item_id, num):
     recs = results[item_id][:num]
 
     output = [
-        "Recommended: " + item(rec[1]) + "\n (score:" + str(rec[0]) + ")\n"
+        # output + score
+        # Recommended: " + item(rec[1]) + "\n (score:" + str(rec[0]) + ")\n"
+        # output
+        "Recommended: " + item(rec[1]) + "\n"
         for rec in recs
     ]
-
-    return listToString(output)
+    r_out = "Recommending " + str(num) + " products similar to " + item(item_id) + "\n"
+    return r_out + listToString(output)
 
 
 def listToString(l):

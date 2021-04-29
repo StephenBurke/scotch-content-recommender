@@ -7,6 +7,7 @@ keywords = whiskey_names
 sg.theme("DarkTeal")
 font = ("Helvetica", 16)
 
+
 layout = [
     [sg.Text("Input Whiskey:", font=font)],
     [sg.Input("", size=(50, 1), font=font, enable_events=True, key="-IN-")],
@@ -35,6 +36,34 @@ layout = [
     [sg.Button("Quit"), sg.Button("Submit")],
 ]
 
+
+def recommend_response(values_in):
+    # layout = [[sg.Text(f"{i}. "), sg.In(key=i)] for i in range(1, 6)]
+    layout = [
+        [
+            sg.Text(
+                recommend(
+                    whiskey_names.index(
+                        str(values_in["-BOX-"])
+                        .replace("[", "", 1)
+                        .replace("]", "", -1)
+                        .replace("'", "", 1)
+                        .replace("'", "", -1)
+                    ),
+                    10,
+                )
+            )
+        ]
+    ]
+    layout += [[sg.Button("Back")]]
+    window = sg.Window("Recommended whiskeys: ", layout)
+    while True:
+        event, values = window.read()
+        if event == "Back" or event == sg.WIN_CLOSED:
+            break
+    window.close()
+
+
 window = sg.Window("AutoComplete", layout, return_keyboard_events=True, finalize=True)
 sel_item = 0
 list_element = window.Element("-BOX-")
@@ -47,18 +76,7 @@ while True:
     if event == sg.WINDOW_CLOSED or event == "Quit":
         break
     elif event == "Submit":
-        sg.Popup(
-            recommend(
-                whiskey_names.index(
-                    str(values["-BOX-"])
-                    .replace("[", "", 1)
-                    .replace("]", "", -1)
-                    .replace("'", "", 1)
-                    .replace("'", "", -1)
-                ),
-                10,
-            )
-        )
+        recommend_response(values)
     # pressing down arrow will trigger event -IN- then aftewards event Down:40
     elif event == "Down:40":
         sel_item = sel_item + (sel_item < len(prediction_list))
