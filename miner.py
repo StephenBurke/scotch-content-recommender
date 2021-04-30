@@ -134,7 +134,6 @@ def listToString(l):
 
 # Reads the results out of the dictionary.
 def recommend(item_id, num):
-    # print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
     recs = results[item_id][:num]
 
     output = [
