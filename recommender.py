@@ -3,7 +3,6 @@ from miner import recommend, whiskey_names
 
 
 def recommend_response(values_in):
-    # layout = [[sg.Text(f"{i}. "), sg.In(key=i)] for i in range(1, 6)]
     layout = [
         [
             sg.Text(
@@ -21,7 +20,7 @@ def recommend_response(values_in):
         ]
     ]
     layout += [[sg.CButton("Quit"), sg.Button("Another Recommendation")]]
-    window = sg.Window("Recommended whiskeys: ", layout)
+    window = sg.Window("Recommended whiskeys", layout)
     global done
     done = False
 
@@ -35,7 +34,6 @@ def recommend_response(values_in):
     window.close()
 
 
-# https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
 # initial code for autocomplete input
 
 keywords = whiskey_names
@@ -72,8 +70,10 @@ layout = [
     [sg.CButton("Quit"), sg.Button("Submit")],
 ]
 
-
-window = sg.Window("AutoComplete", layout, return_keyboard_events=True, finalize=True)
+# Search window
+window = sg.Window(
+    "Whiskey Recommender", layout, return_keyboard_events=True, finalize=True
+)
 sel_item = 0
 list_element = window.Element("-BOX-")
 input_text = ""
