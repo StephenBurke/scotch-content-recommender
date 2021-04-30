@@ -15,12 +15,14 @@ def recommend_response(values_in):
                         .replace("'", "", -1)
                     ),
                     10,
-                )
+                ),
+                font=font,
+                size=(50, 13),
             )
         ]
     ]
     layout += [[sg.CButton("Quit"), sg.Button("Another Recommendation")]]
-    window = sg.Window("Recommended whiskeys", layout)
+    window = sg.Window("Recommended WWhiskeys", layout)
     global done
     done = False
 
@@ -38,7 +40,7 @@ def recommend_response(values_in):
 
 keywords = whiskey_names
 
-sg.theme("DarkTeal")
+sg.theme("LightGreen3")
 font = ("Helvetica", 16)
 
 
