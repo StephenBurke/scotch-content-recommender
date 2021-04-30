@@ -69,7 +69,7 @@ layout = [
             )
         )
     ],
-    [sg.Button("Quit"), sg.Button("Clear"), sg.Button("Submit")],
+    [sg.Button("Quit"), sg.Button("Submit")],
 ]
 
 
@@ -85,16 +85,15 @@ while True:
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == "Quit":
         break
-    elif event == "Clear":
-        window.Element("-IN-").Update(value=[])
     elif event == "Submit":
         recommend_response(values)
+        window.Element("-IN-").Update(value=[])
         if done:
             break
         else:
             continue
 
-    # Tabing then pressing down arrow will trigger event -IN- then aftewards event Down:40
+    # Tabing then pressing down arrow will trigger event -IN- then afterwords event Down:40
     elif event == "Down:40":
         sel_item = sel_item + (sel_item < len(prediction_list))
         list_element.Update(set_to_index=sel_item)
