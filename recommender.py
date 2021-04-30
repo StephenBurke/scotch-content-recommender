@@ -1,7 +1,9 @@
 import PySimpleGUI as sg
 from miner import recommend, whiskey_names
+import sys
 
 # https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
+# initial code for autocomplete input
 # In case I forget to give credit in the poster
 keywords = whiskey_names
 
@@ -56,20 +58,20 @@ def recommend_response(values_in):
             )
         ]
     ]
-    layout += [[sg.Button("Another recommendation"), sg.Button("Quit")]]
+    layout += [[sg.Button("Another Recommendation"), sg.Button("Quit")]]
     window = sg.Window("Recommended whiskeys: ", layout)
     global done
     done = False
+
     while True:
         event, values = window.read()
-        if event == "Another recommendation" or event == sg.WIN_CLOSED:
+        if event == "Another Recommendation" or event == sg.WIN_CLOSED:
+            clear = True
             break
         elif event == "Quit":
             done = True
             break
     window.close()
-
-    return done
 
 
 # def leave ():
@@ -81,9 +83,17 @@ sel_item = 0
 list_element = window.Element("-BOX-")
 input_text = ""
 prediction_list = []
+global clear
+clear = False
 while True:
 
     event, values = window.read()
+    if clear:
+        list_element.Update(Values=[])
+        sys.stdout.write(type(list_element))
+        # print(list_element)
+        clear = False
+
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == "Quit":
         break
@@ -91,7 +101,10 @@ while True:
         recommend_response(values)
         if done:
             break
-    # pressing down arrow will trigger event -IN- then aftewards event Down:40
+        else:
+            continue
+
+    # Tabing then pressing down arrow will trigger event -IN- then aftewards event Down:40
     elif event == "Down:40":
         sel_item = sel_item + (sel_item < len(prediction_list))
         list_element.Update(set_to_index=sel_item)
@@ -110,7 +123,7 @@ while True:
             input_text = text
         if text:
             prediction_list = [item for item in keywords if item.startswith(text)]
-        # print(prediction_list[0])
+
         list_element.update(values=prediction_list)
         sel_item = 0
         list_element.Update(set_to_index=sel_item)
