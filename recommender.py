@@ -1,6 +1,39 @@
 import PySimpleGUI as sg
 from miner import recommend, whiskey_names
-import sys
+
+
+def recommend_response(values_in):
+    # layout = [[sg.Text(f"{i}. "), sg.In(key=i)] for i in range(1, 6)]
+    layout = [
+        [
+            sg.Text(
+                recommend(
+                    whiskey_names.index(
+                        str(values_in["-BOX-"])
+                        .replace("[", "", 1)
+                        .replace("]", "", -1)
+                        .replace("'", "", 1)
+                        .replace("'", "", -1)
+                    ),
+                    10,
+                )
+            )
+        ]
+    ]
+    layout += [[sg.Button("Quit"), sg.Button("Another Recommendation")]]
+    window = sg.Window("Recommended whiskeys: ", layout)
+    global done
+    done = False
+
+    while True:
+        event, values = window.read()
+        if event == "Another Recommendation" or event == sg.WIN_CLOSED:
+            break
+        elif event == "Quit":
+            done = True
+            break
+    window.close()
+
 
 # https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
 # initial code for autocomplete input
@@ -36,46 +69,8 @@ layout = [
             )
         )
     ],
-    [sg.Button("Quit"), sg.Button("Submit")],
+    [sg.Button("Quit"), sg.Button("Clear"), sg.Button("Submit")],
 ]
-
-
-def recommend_response(values_in):
-    # layout = [[sg.Text(f"{i}. "), sg.In(key=i)] for i in range(1, 6)]
-    layout = [
-        [
-            sg.Text(
-                recommend(
-                    whiskey_names.index(
-                        str(values_in["-BOX-"])
-                        .replace("[", "", 1)
-                        .replace("]", "", -1)
-                        .replace("'", "", 1)
-                        .replace("'", "", -1)
-                    ),
-                    10,
-                )
-            )
-        ]
-    ]
-    layout += [[sg.Button("Quit"), sg.Button("Another Recommendation")]]
-    window = sg.Window("Recommended whiskeys: ", layout)
-    global done
-    done = False
-
-    while True:
-        event, values = window.read()
-        if event == "Another Recommendation" or event == sg.WIN_CLOSED:
-            clear = True
-            break
-        elif event == "Quit":
-            done = True
-            break
-    window.close()
-
-
-# def leave ():
-#    return True
 
 
 window = sg.Window("AutoComplete", layout, return_keyboard_events=True, finalize=True)
@@ -83,20 +78,15 @@ sel_item = 0
 list_element = window.Element("-BOX-")
 input_text = ""
 prediction_list = []
-global clear
-clear = False
 while True:
 
     event, values = window.read()
-    if clear:
-        list_element.Update(Values=[])
-        sys.stdout.write(type(list_element))
-        # print(list_element)
-        clear = False
 
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == "Quit":
         break
+    elif event == "Clear":
+        window.Element("-IN-").Update(value=[])
     elif event == "Submit":
         recommend_response(values)
         if done:
