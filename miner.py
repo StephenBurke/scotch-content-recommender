@@ -145,6 +145,6 @@ def recommend(item_id, num):
     ]
 
     r_out = (
-        "Recommending " + str(num) + " whiskies similar to " + item(item_id) + ":\n\n"
+        "Recommending " + str(num) + " whiskeys similar to " + item(item_id) + ":\n\n"
     )
     return r_out + listToString(output)
