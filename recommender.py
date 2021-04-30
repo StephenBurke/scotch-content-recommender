@@ -37,7 +37,7 @@ def recommend_response(values_in):
 
 # https://github.com/PySimpleGUI/PySimpleGUI/issues/820 user: bonklers
 # initial code for autocomplete input
-# In case I forget to give credit in the poster
+
 keywords = whiskey_names
 
 sg.theme("DarkTeal")
@@ -102,7 +102,15 @@ while True:
         list_element.Update(set_to_index=sel_item)
     elif event == "\r":
         if len(values["-BOX-"]) > 0:
-            window["-IN-"].update(value=values["-BOX-"])
+            window["-IN-"].update(
+                value=str(values["-BOX-"])
+                .replace("{", "")
+                .replace("}", "")
+                .replace("[", "")
+                .replace("]", "")
+                .replace("'", "", 1)
+                .replace("'", "", -1)
+            )
             window["-BOX-CONTAINER-"].update(visible=False)
     elif event == "-IN-":
         text = values["-IN-"]
@@ -123,7 +131,15 @@ while True:
             window["-BOX-CONTAINER-"].update(visible=False)
 
     elif event == "-BOX-":
-        window["-IN-"].update(value=values["-BOX-"])
+        window["-IN-"].update(
+            value=str(values["-BOX-"])
+            .replace("{", "")
+            .replace("}", "")
+            .replace("[", "")
+            .replace("]", "")
+            .replace("'", "", 1)
+            .replace("'", "", -1)
+        )
         visible = False
         window["-BOX-CONTAINER-"].update(visible=False)
 
