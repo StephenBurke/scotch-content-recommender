@@ -44,6 +44,7 @@ setup(
         "bs4",
         "PySimpleGui",
         "tk",
+        "lxml",
     ],
     # List dependency links
     # dependency_links=["https://github.com/python/cpython/blob/3.9/Lib/pickle.py"],
