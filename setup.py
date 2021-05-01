@@ -50,7 +50,6 @@ setup(
         "python-dateutil == 2.8.1",
         "pytz == 2021.1",
         "wheel",
-        "bdist_wheel",
     ],
     # List dependency links
     # dependency_links=["https://github.com/python/cpython/blob/3.9/Lib/pickle.py"],
