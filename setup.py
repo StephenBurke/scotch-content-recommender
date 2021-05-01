@@ -49,7 +49,7 @@ setup(
         "numpy == 1.20.1",
         "python-dateutil == 2.8.1",
         "pytz == 2021.1",
-        "wheel",
+        "wheel == 0.36.2",
     ],
     # List dependency links
     # dependency_links=["https://github.com/python/cpython/blob/3.9/Lib/pickle.py"],
