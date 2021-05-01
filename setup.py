@@ -43,7 +43,6 @@ setup(
         "scikit-learn",
         "bs4",
         "pickle",
-        "csv",
         "PySimpleGui",
     ],
     # https://pypi.org/classifiers/
