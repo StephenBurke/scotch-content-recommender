@@ -39,13 +39,13 @@ setup(
     keywords=["Python"],
     # List project dependencies:
     install_requires=[
-        "<pandas>",
-        "<scikit-learn>",
-        "<bs4>",
-        "<pickle>",
-        "<csv>",
-        "<tkinter>",
-        "<PySimpleGui>",
+        "pandas",
+        "scikit-learn",
+        "bs4",
+        "pickle",
+        "csv",
+        "tkinter",
+        "PySimpleGui",
     ],
     # https://pypi.org/classifiers/
     classifiers=[],
