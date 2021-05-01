@@ -1,7 +1,0 @@
-pandas
-scikit-learn
-bs4
-PySimpleGui
-tk
-lxml
-requests
