@@ -1,0 +1,7 @@
+README.md
+setup.py
+scotch_content_recommender.egg-info/PKG-INFO
+scotch_content_recommender.egg-info/SOURCES.txt
+scotch_content_recommender.egg-info/dependency_links.txt
+scotch_content_recommender.egg-info/requires.txt
+scotch_content_recommender.egg-info/top_level.txt

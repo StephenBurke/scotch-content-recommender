@@ -15,7 +15,7 @@ except Exception:
 
 setup(
     # Project name:
-    name="Scotch Content Recommender",
+    name="scotch-content-recommender",
     # Packages to include in the distribution:
     packages=find_packages("", ""),
     # Project version number:
@@ -42,9 +42,10 @@ setup(
         "pandas",
         "scikit-learn",
         "bs4",
-        "pickle",
         "PySimpleGui",
     ],
-    # https://pypi.org/classifiers/
+    # List dependency links
+    # dependency_links=["https://github.com/python/cpython/blob/3.9/Lib/pickle.py"],
+    # List classifiers
     classifiers=[],
 )
