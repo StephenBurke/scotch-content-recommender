@@ -1,8 +1,9 @@
 from setuptools import sandbox
-import PySimpleGUI as sg
-from miner import recommend, whiskey_names
 
 sandbox.run_setup("setup.py", ["clean", "bdist_wheel"])
+
+import PySimpleGUI as sg
+from miner import recommend, whiskey_names
 
 
 def recommend_response(values_in):
