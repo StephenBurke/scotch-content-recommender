@@ -43,7 +43,7 @@ setup(
         "scikit-learn",
         "bs4",
         "PySimpleGui",
-        "requests",
+        "tk",
     ],
     # List dependency links
     # dependency_links=["https://github.com/python/cpython/blob/3.9/Lib/pickle.py"],

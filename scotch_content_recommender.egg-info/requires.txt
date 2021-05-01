@@ -2,4 +2,4 @@ pandas
 scikit-learn
 bs4
 PySimpleGui
-requests
+tk
