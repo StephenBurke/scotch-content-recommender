@@ -6,8 +6,7 @@ import pickle
 import csv
 from tkinter import *
 import tkinter as tk
-
-# import requests
+import requests
 
 # Finds list of whiskey names
 page1 = pickle.load(open("list-of-bottles.p", "rb"))
