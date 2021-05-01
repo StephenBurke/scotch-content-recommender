@@ -6,12 +6,12 @@ import os
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 try:
-    with open(os.path.join(current_directory, ‘README.md’), encoding=’utf-8′) as f: 
+    with open(os.path.join(current_directory, 'README.md'), encoding='utf-8') as f: 
         long_description = f.read()
 
 except Exception:
 
-    long_description = ”
+    long_description = ''
 
 setup(
 
@@ -19,17 +19,17 @@ setup(
     name="Scotch Content Recommender”,
 
     # Packages to include in the distribution:
-    packages=find_packages(‘,’),
+    packages=find_packages('',''),
 
     # Project version number:
-    version=”,
+    version='',
 
     # List a license for the project, eg. MIT License
     license='MIT',
 
     # Short description of your library:
 
-    description=”,
+    description='',
 
     # Long description of your library:
     long_description=long_description,
@@ -45,7 +45,7 @@ setup(
     url="https://github.com/StephenBurke/scotch-content-recommender",
 
     # Download Link from where the project can be downloaded from:
-    download_url=”,
+    download_url='',
 
     # List of keywords:
     keywords=['Python'],
