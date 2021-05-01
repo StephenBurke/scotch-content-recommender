@@ -49,6 +49,7 @@ setup(
         "numpy == 1.20.1",
         "python-dateutil == 2.8.1",
         "pytz == 2021.1",
+        "wheel",
         "bdist_wheel",
     ],
     # List dependency links
