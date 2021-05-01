@@ -16,7 +16,7 @@ except Exception:
 setup(
 
     # Project name:
-    name="Scotch Content Recommender”,
+    name='Scotch Content Recommender',
 
     # Packages to include in the distribution:
     packages=find_packages('',''),
@@ -42,7 +42,7 @@ setup(
     author_email='burke.stephenpaul@gmail.com',
 
     # Link to your github repository or website:
-    url="https://github.com/StephenBurke/scotch-content-recommender",
+    url='https://github.com/StephenBurke/scotch-content-recommender',
 
     # Download Link from where the project can be downloaded from:
     download_url='',
