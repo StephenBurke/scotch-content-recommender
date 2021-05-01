@@ -44,7 +44,7 @@ setup(
         "bs4",
         "pickle",
         "csv",
-        "python3.9-tkinter",
+        "python3.9-tk",
         "PySimpleGui",
     ],
     # https://pypi.org/classifiers/
