@@ -9,5 +9,6 @@ share/
 all-whiskey-reviews.csv
 whiskey_reviews.csv
 .vscode/
-__pychahce__/
 __pycache__/
+dist/
+scotch_content_recommender.egg-info
