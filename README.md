@@ -12,17 +12,11 @@ git clone https://github.com/StephenBurke/scotch-content-recommender
 
 ## Usage
 
-1. cd to the containing directory
-2. Install requests
+1. cd to the repo's directory
+2. Run [recommender.py](https://github.com/StephenBurke/scotch-content-recommender/blob/main/recommender.py)
 
 ```bash
-pip install requests
-```
-
-3. Run [recommender.py](https://github.com/StephenBurke/scotch-content-recommender/blob/main/recommender.py)
-
-```bash
-python3 recommender.py
+python recommender.py
 ```
 
 ## Contributing
