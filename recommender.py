@@ -1,7 +1,3 @@
-from setuptools import sandbox
-
-sandbox.run_setup("setup.py", ["clean", "bdist_wheel"])
-
 import PySimpleGUI as sg
 from miner import recommend, whiskey_names
 
