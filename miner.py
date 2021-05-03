@@ -126,11 +126,6 @@ def item(id):
     return ds.loc[ds["id"] == id]["description"].tolist()[0].split(" - ")[0]
 
 
-def listToString(l):
-    str1 = ""
-    return str1.join(l)
-
-
 # Reads the results out of the dictionary.
 def recommend(item_id, num):
     recs = results[item_id][:num]
@@ -146,4 +141,4 @@ def recommend(item_id, num):
     r_out = (
         "Recommending " + str(num) + " whiskeys similar to " + item(item_id) + ":\n\n"
     )
-    return r_out + listToString(output)
+    return r_out + "".join(output)
