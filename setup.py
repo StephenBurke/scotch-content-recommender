@@ -19,7 +19,7 @@ setup(
     # Packages to include in the distribution:
     packages=find_packages("", ""),
     # Project version number:
-    version="",
+    version="0.0.2",
     # List a license for the project, eg. MIT License
     license="MIT",
     # Short description of your library:
