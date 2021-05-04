@@ -60,13 +60,13 @@ for r in range(len(whiskey_names)):
 
 """  *************  If data looks bad rewrite the 3 csv below  ************  """
 
-"""
+
 # csv of whiskey_name, whiskey_desc
 # two columns
 
 whiskey_dict = {"id": whiskey_names, "description": whiskey_desc}
 df = pd.DataFrame(whiskey_dict)
-df.to_csv("whiskey-reviews.csv", index=False)
+df.to_csv("reviews/whiskey-reviews.csv", index=False)
 
 # csv of whiskey_name - whiskey_desc
 # one column
@@ -77,15 +77,15 @@ for i in range(len(whiskey_names)):
 
 whiskey_dict = {"description": merged_whiskeys}
 df = pd.DataFrame(whiskey_dict)
-df.to_csv("merged-whiskey-reviews.csv", index=False)
+df.to_csv("reviews/merged-whiskey-reviews.csv", index=False)
 
 # csv of index, whiskey_name - whiskey_desc
 # two columns
 
 whiskey_dict = {"id": range(509), "description": merged_whiskeys}
 df = pd.DataFrame(whiskey_dict)
-df.to_csv("indexed-whiskey-reviews.csv", index=False)
-"""
+df.to_csv("reviews/indexed-whiskey-reviews.csv", index=False)
+
 
 # Code for most of recommendation system comes from
 # https://github.com/nikitaa30/Content-based-Recommender-System
@@ -101,7 +101,7 @@ IDF(t) = log_e(Total number of documents) /
 """
 
 
-ds = pd.read_csv("indexed-whiskey-reviews.csv")
+ds = pd.read_csv("reviews/indexed-whiskey-reviews.csv")
 
 tf = TfidfVectorizer(
     analyzer="word", ngram_range=(1, 3), min_df=0, stop_words="english"
