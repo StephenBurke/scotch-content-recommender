@@ -17,9 +17,7 @@ whiskey_names = []
 name0 = soup1.find("div", {"id": "filter_results"})
 whiskey_names = name0.find_all("h4")
 
-
-for w in range(len(whiskey_names)):
-    whiskey_names[w] = whiskey_names[w].text
+whiskey_names = [w.text for w in whiskey_names]
 
 
 # Finds whiskey urls
@@ -141,4 +139,5 @@ def recommend(item_id, num):
     r_out = (
         "Recommending " + str(num) + " whiskeys similar to " + item(item_id) + ":\n\n"
     )
+
     return r_out + "".join(output)
