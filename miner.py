@@ -104,9 +104,7 @@ IDF(t) = log_e(Total number of documents) /
 
 ds = pd.read_csv("reviews/indexed-whiskey-reviews.csv")
 
-tf = TfidfVectorizer(
-    analyzer="word", ngram_range=(1, 3), min_df=0, stop_words="english"
-)
+tf = TfidfVectorizer(ngram_range=(1, 3), min_df=0, stop_words="english")
 
 tfidf_matrix = tf.fit_transform(ds["description"])
 
