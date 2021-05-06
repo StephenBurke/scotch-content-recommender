@@ -60,7 +60,7 @@ for r in range(len(whiskey_names)):
 
 """  *************  If data looks bad rewrite the 3 csv below  ************  """
 
-
+"""
 # csv of whiskey_name, whiskey_desc
 # two columns
 
@@ -89,6 +89,7 @@ df.to_csv("reviews/indexed-whiskey-reviews.csv", index=False)
 
 # Code for most of recommendation system comes from
 # https://github.com/nikitaa30/Content-based-Recommender-System
+"""
 
 """
 Some definitions
