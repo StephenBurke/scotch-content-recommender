@@ -19,7 +19,7 @@ git clone https://github.com/StephenBurke/scotch-content-recommender
 python setup.py install
 ```
 
-2. Run [recommender.py](https://github.com/StephenBurke/scotch-content-recommender/blob/main/recommender.py)
+3. Run [recommender.py](https://github.com/StephenBurke/scotch-content-recommender/blob/main/recommender.py)
 
 ```bash
 python recommender.py
