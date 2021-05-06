@@ -63,10 +63,24 @@ layout = [
                         )
                     ]
                 ],
-                key="-BOX-CONTAINER-",
-                pad=(0, 0),
-                visible=False,
-            )
+                sg.Text(
+                    recommend(
+                        whiskey_names.index(
+                            str(values["-BOX-"])
+                            .replace("[", "", 1)
+                            .replace("]", "", -1)
+                            .replace("'", "", 1)
+                            .replace("'", "", -1)
+                        ),
+                        10,
+                    ),
+                    font=font,
+                    size=(50, 13),
+                ),
+            ),
+            key="-BOX-CONTAINER-",
+            pad=(0, 0),
+            visible=False,
         )
     ],
     [sg.CButton("Quit"), sg.Button("Submit")],
@@ -88,7 +102,7 @@ while True:
     if event == sg.WINDOW_CLOSED or event == "Quit":
         break
     elif event == "Submit":
-        recommend_response(values)
+        recommend(values)
         window.Element("-IN-").Update(value=[])
         if done:
             break
