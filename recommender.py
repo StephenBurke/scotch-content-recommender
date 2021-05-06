@@ -22,7 +22,7 @@ def recommend_response(values_in):
         ]
     ]
     layout += [[sg.CButton("Quit"), sg.Button("Another Recommendation")]]
-    window = sg.Window("Recommended WWhiskeys", layout)
+    window = sg.Window("Recommended Whiskeys", layout)
     global done
     done = False
 
